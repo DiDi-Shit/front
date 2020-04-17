@@ -3,7 +3,7 @@ import { Button, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import JMap from "./assets/components/JMap"
 function DetailsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -14,13 +14,16 @@ function DetailsScreen() {
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
+    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    //   <Text>Home screen</Text>
+    //   <Button
+    //     title="Go to Details"
+    //     onPress={() => navigation.navigate('Details')}
+    //   />
+    // </View>
+    <JMap>
+
+    </JMap>
   );
 }
 
