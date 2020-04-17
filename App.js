@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import JMap from "./assets/components/JMap"
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+
 function DetailsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -12,29 +15,17 @@ function DetailsScreen() {
   );
 }
 
-function HomeScreen({ navigation }) {
+function MapScreen({ navigation }) {
   return (
-    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    //   <Text>Home screen</Text>
-    //   <Button
-    //     title="Go to Details"
-    //     onPress={() => navigation.navigate('Details')}
-    //   />
-    // </View>
     <JMap>
-
     </JMap>
   );
 }
 
-function SettingsScreen({ navigation }) {
+function SendPaperScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
+      <Text>订单： 13号厕所 *****</Text>
     </View>
   );
 }
@@ -44,20 +35,26 @@ const HomeStack = createStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen name="Home" component={MapScreen} />
     </HomeStack.Navigator>
   );
 }
 
-const SettingsStack = createStackNavigator();
+//const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen() {
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
+    <Text>性别：*</Text>
+  );
+}
+
+const SendPaperStack = createStackNavigator();
+
+function SendPaperStackScreen() {
+  return (
+    <SendPaperStack.Navigator>
+      <SendPaperStack.Screen name="Settings" component={SendPaperScreen} />
+    </SendPaperStack.Navigator>
   );
 }
 
@@ -66,9 +63,34 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator 
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'ios-information-circle'
+                : 'ios-information-circle-outline';
+            } else if (route.name === '个人中心') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            } else if (route.name === '接单送纸') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+        }}
+      >
+        <Tab.Screen name="接单送纸" component={SendPaperStackScreen} />
         <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+        <Tab.Screen name="个人中心" component={SettingsStackScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
