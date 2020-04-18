@@ -198,7 +198,7 @@ class Evaluat extends Component{
 
 const Stack = createStackNavigator();
 
-function App() {
+function SendPaperView() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -218,4 +218,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default App;
+export default SendPaperView;

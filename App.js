@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import JMap from "./assets/components/JMap"
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import SendPaperView from "./assets/components/infosendpaper"
 
 
 function DetailsScreen() {
@@ -24,9 +25,12 @@ function MapScreen({ navigation }) {
 
 function SendPaperScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>订单： 13号厕所 *****</Text>
-    </View>
+    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    //   <Text>订单： 13号厕所 *****</Text>
+    // </View>
+    <App>
+
+    </App>
   );
 }
 
@@ -63,7 +67,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator 
+      <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
