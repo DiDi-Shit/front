@@ -28,9 +28,7 @@ function SendPaperScreen({ navigation }) {
     // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     //   <Text>订单： 13号厕所 *****</Text>
     // </View>
-    <App>
-
-    </App>
+    <SendPaperView/>
   );
 }
 

@@ -200,7 +200,6 @@ const Stack = createStackNavigator();
 
 function SendPaperView() {
   return (
-    <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Infosendpaper} />
         <Stack.Screen name="Modify" component={Modifyinfo} />
@@ -208,7 +207,6 @@ function SendPaperView() {
         <Stack.Screen name="Detail" component={Detailinfo} />
         <Stack.Screen name="Evaluation" component={Evaluat} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }
 
