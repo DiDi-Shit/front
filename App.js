@@ -28,7 +28,7 @@ function SendPaperScreen({ navigation }) {
     // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     //   <Text>订单： 13号厕所 *****</Text>
     // </View>
-    <SendPaperView/>
+    <SendPaperView />
   );
 }
 
@@ -36,7 +36,9 @@ const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{
+      headerShown: false
+    }}>
       <HomeStack.Screen name="Home" component={MapScreen} />
     </HomeStack.Navigator>
   );
@@ -54,7 +56,9 @@ const SendPaperStack = createStackNavigator();
 
 function SendPaperStackScreen() {
   return (
-    <SendPaperStack.Navigator>
+    <SendPaperStack.Navigator screenOptions={{
+      headerShown: false
+    }}>
       <SendPaperStack.Screen name="Settings" component={SendPaperScreen} />
     </SendPaperStack.Navigator>
   );
