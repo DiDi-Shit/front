@@ -28,7 +28,6 @@ function PersonCenterScreen() {
   );
 }
 
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {
