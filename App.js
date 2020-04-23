@@ -3,18 +3,10 @@ import { Button, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import JMap from "./assets/components/JMap"
+import JMap from "./assets/components/JMap";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SendPaperView from "./assets/components/infosendpaper"
-
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
+import SendPaperView from "./assets/components/infosendpaper";
+import PersonCenterView from "./assets/components/personalCenter";
 
 function MapScreen({ navigation }) {
   return (
@@ -25,44 +17,17 @@ function MapScreen({ navigation }) {
 
 function SendPaperScreen({ navigation }) {
   return (
-    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    //   <Text>订单： 13号厕所 *****</Text>
-    // </View>
     <SendPaperView />
   );
 }
 
-const HomeStack = createStackNavigator();
 
-function HomeStackScreen() {
+function PersonCenterScreen() {
   return (
-    <HomeStack.Navigator screenOptions={{
-      headerShown: false
-    }}>
-      <HomeStack.Screen name="Home" component={MapScreen} />
-    </HomeStack.Navigator>
+    <PersonCenterView />
   );
 }
 
-//const SettingsStack = createStackNavigator();
-
-function SettingsStackScreen() {
-  return (
-    <Text>性别：*</Text>
-  );
-}
-
-const SendPaperStack = createStackNavigator();
-
-function SendPaperStackScreen() {
-  return (
-    <SendPaperStack.Navigator screenOptions={{
-      headerShown: false
-    }}>
-      <SendPaperStack.Screen name="Settings" component={SendPaperScreen} />
-    </SendPaperStack.Navigator>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
@@ -94,9 +59,9 @@ export default function App() {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="接单送纸" component={SendPaperStackScreen} />
-        <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="个人中心" component={SettingsStackScreen} />
+        <Tab.Screen name="接单送纸" component={SendPaperScreen} />
+        <Tab.Screen name="Home" component={MapScreen} />
+        <Tab.Screen name="个人中心" component={PersonCenterScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
