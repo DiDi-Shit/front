@@ -1,6 +1,7 @@
 import { MapView, Marker } from "react-native-amap3d";
 import React, { Component } from "react"
 import { View, Text } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default class JMap extends Component {
     constructor() {
@@ -16,7 +17,8 @@ export default class JMap extends Component {
     render() {
         const { latitude, longitude } = this.state;
         return (
-            <MapView locationEnabled onLocation={({ nativeEvent }) => this.change(nativeEvent.latitude, nativeEvent.longitude)} style={{ width: 500, height: 500 }} >
+            <MapView locationEnabled onLocation={({ nativeEvent }) => this.change(nativeEvent.latitude, nativeEvent.longitude)} style={StyleSheet.absoluteFill} center={this.state} showsLocationButton
+                zoomlevel={15} coordinate = {this.state} zoomLevel={17}> 
                 <Marker
                     activeF
                     title='厕所'
