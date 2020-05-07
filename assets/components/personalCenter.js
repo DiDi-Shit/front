@@ -12,7 +12,6 @@ class PersonCenter extends Component {
         this.state = {
             sex: '男',
             name: 'jzy很菜',
-            tel: '13344679792',
         }
     }
 
@@ -21,12 +20,13 @@ class PersonCenter extends Component {
             <ThemeProvider>
                 <Text>昵称：{this.state.name}</Text>
                 <Text>性别：{this.state.sex}</Text>
-                <Text>联系方式：{this.state.tel}</Text>
             </ThemeProvider>
         );
     }
 
 }
+
+
 
 
 const Stack = createStackNavigator();

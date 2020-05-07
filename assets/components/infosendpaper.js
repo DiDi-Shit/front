@@ -42,9 +42,15 @@ class Infosendpaper extends Component {
                     onChangeText={text => this.getphone(text)}
                 />
                 <Button
-                    titleStyle={styles.buttonStyle}
+                    icon={{
+                        name: "arrow-right",
+                        size: 15,
+                        color: "white"
+                    }}
+                    iconRight
                     title="提交订单"
                     onPress={() => this.props.navigation.navigate('Waiting')}
+                    
                 />
             </ThemeProvider>
         );
@@ -121,9 +127,8 @@ class Waiting extends Component {
                     onPress={() => this.props.navigation.navigate('Modify')}
                 />
                 <Button
-                    titleStyle={styles.buttonStyle}
-                    title="eeee"
                     onPress={() => this.props.navigation.navigate('Detail')}
+                    loading
                 />
             </ThemeProvider>
         );
