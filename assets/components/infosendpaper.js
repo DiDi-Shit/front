@@ -101,7 +101,6 @@ class Modifyinfo extends Component {
     };
 
     del() {
-
         this.props.navigation.popToTop();
     }
 
@@ -143,7 +142,7 @@ class Modifyinfo extends Component {
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="取消订单"
-                    onPress={() => this.props.del()}
+                    onPress={() => this.del()}
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
@@ -180,7 +179,7 @@ class Waiting extends Component {
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="取消订单"
-                    onPress={() => this.props.del()}
+                    onPress={() => this.del()}
                 />
                 <Button
                     onPress={() => this.props.navigation.navigate('Detail')}
@@ -216,7 +215,7 @@ class Detailinfo extends Component {
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="取消订单"
-                    onPress={() => this.props.del()}
+                    onPress={() => this.del()}
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
