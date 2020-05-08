@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import JMap from "./assets/components/JMap";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SendPaperView from "./assets/components/infosendpaper";
-
+import SampleAppMovies from "./assets/components/jiedan";
 function MapScreen({ navigation }) {
   return (
     <JMap>
@@ -16,7 +16,7 @@ function MapScreen({ navigation }) {
 
 function SendPaperScreen({ navigation }) {
   return (
-    <SendPaperView />
+    <SampleAppMovies />
   );
 }
 
