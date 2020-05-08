@@ -48,7 +48,7 @@ export default class SampleAppMovies extends Component {
   renderLoadingView() {
     return (
       <View style={styles.container}>
-        <Text>Loading movies...</Text>
+        <Text>Loading ...</Text>
       </View>
     );
   }
