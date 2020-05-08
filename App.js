@@ -24,7 +24,7 @@ function SendPaperScreen({ navigation }) {
 
 function PersonCenterScreen() {
   return (
-    <PersonCenterView />
+    <SendPaperView />
   );
 }
 
@@ -43,7 +43,7 @@ export default function App() {
               iconName = focused
                 ? 'ios-information-circle'
                 : 'ios-information-circle-outline';
-            } else if (route.name === '个人中心') {
+            } else if (route.name === '请求送纸') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
             } else if (route.name === '接单送纸') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
@@ -60,7 +60,7 @@ export default function App() {
       >
         <Tab.Screen name="接单送纸" component={SendPaperScreen} />
         <Tab.Screen name="Home" component={MapScreen} />
-        <Tab.Screen name="个人中心" component={PersonCenterScreen} />
+        <Tab.Screen name="请求送纸" component={PersonCenterScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
