@@ -16,29 +16,58 @@ class Infosendpaper extends Component {
         };
     }
 
+    my_data = {
+        id: 10,
+        tid: 0,
+        statement: 'asd'
+    };
+
     getValue(text) {
-        this.setState({
-            textvalue: text
-        })
+        this.my_data.tid=text
     }
 
     getphone(text) {
-        this.setState({
-            telphone: text
-        })
+        this.my_data.statement=text
+    }
+
+    get_info() {
+        var url = "http://pzzzzz.live:9080/Create_Order?"
+        let query = Object.keys(this.my_data)
+            .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(this.my_data[k]))
+            .join('&');
+        //console.log(url,query);
+        let now_url = url + query;
+        console.log(now_url)
+        fetch(now_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+            },
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson.mx, "ok");
+                this.setState({ datas: responseJson }, function () { });
+            }).catch((error) => {
+                alert(error);
+            });
+    }
+
+    submit(){
+        this.get_info()
+        this.props.navigation.navigate('Waiting')
     }
 
     render() {
         return (
             <ThemeProvider>
                 <Input
-                    label="备注"
-                    placeholder='请输入详细信息'
+                    label="厕所id"
+                    placeholder='请输入厕所id'
                     onChangeText={text => this.getValue(text)}
                 />
                 <Input
-                    label='联系方式'
-                    value={this.state.telphone}
+                    label="备注"
+                    placeholder='请输入详细信息及联系方式等'
                     onChangeText={text => this.getphone(text)}
                 />
                 <Button
@@ -49,7 +78,7 @@ class Infosendpaper extends Component {
                     }}
                     iconRight
                     title="提交订单"
-                    onPress={() => this.props.navigation.navigate('Waiting')}
+                    onPress={() => this.submit()}
                     
                 />
             </ThemeProvider>
@@ -67,30 +96,44 @@ class Modifyinfo extends Component {
         };
     }
 
-    getValue(text) {
-        this.setState({
-            textvalue: text
-        })
+    my_data = {
+        statement: 'asd'
+    };
+
+    get_info() {
+        var url = "http://pzzzzz.live:9080/Update_Order?"
+        let query = Object.keys(this.my_data)
+            .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(this.my_data[k]))
+            .join('&');
+        //console.log(url,query);
+        let now_url = url + query;
+        console.log(now_url)
+        fetch(now_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+            },
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson.mx, "ok");
+                this.setState({ datas: responseJson }, function () { });
+            }).catch((error) => {
+                alert(error);
+            });
     }
 
-    getphone(text) {
-        this.setState({
-            telphone: text
-        })
+    getValue(text) {
+        this.my_data.statement=text
     }
+
 
     render() {
         return (
             <ThemeProvider>
                 <Input
                     label="备注"
-                    placeholder='请输入详细信息'
+                    placeholder='请输入详细信息及联系方式等'
                     onChangeText={text => this.getValue(text)}
-                />
-                <Input
-                    label='联系方式'
-                    value={this.state.telphone}
-                    onChangeText={text => this.getphone(text)}
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
@@ -146,6 +189,10 @@ class Detailinfo extends Component {
         }
     }
 
+    del() {
+        
+    }
+
     render() {
         return (
             <ThemeProvider>
@@ -155,6 +202,11 @@ class Detailinfo extends Component {
                     titleStyle={styles.buttonStyle}
                     title="修改订单信息"
                     onPress={() => this.props.navigation.navigate('Modify')}
+                />
+                <Button
+                    titleStyle={styles.buttonStyle}
+                    title="取消订单"
+                    onPress={() => this.props.navigation.popToTop()}
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
