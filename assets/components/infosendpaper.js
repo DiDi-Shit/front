@@ -100,6 +100,11 @@ class Modifyinfo extends Component {
         statement: 'asd'
     };
 
+    del() {
+
+        this.props.navigation.popToTop();
+    }
+
     get_info() {
         var url = "http://pzzzzz.live:9080/Update_Order?"
         let query = Object.keys(this.my_data)
@@ -137,6 +142,11 @@ class Modifyinfo extends Component {
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
+                    title="取消订单"
+                    onPress={() => this.props.del()}
+                />
+                <Button
+                    titleStyle={styles.buttonStyle}
                     title="确定"
                     onPress={() => this.props.navigation.goBack()}
                 />
@@ -150,24 +160,27 @@ class Waiting extends Component {
     constructor() {
         super();
         this.state = {
-            id: '01',
-            text: '备注',
-            tel: '12345678911'
         };
     }
+
+    del() {
+        this.props.navigation.popToTop()
+    }
+
 
     render() {
         return (
             <ThemeProvider>
                 <Text>正在等待……</Text>
-                <Text>订单详情</Text>
-                <Text>厕所id：{this.state.id}</Text>
-                <Text>备注：{this.state.text}</Text>
-                <Text>联系方式：{this.state.tel}</Text>
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="修改订单信息"
                     onPress={() => this.props.navigation.navigate('Modify')}
+                />
+                <Button
+                    titleStyle={styles.buttonStyle}
+                    title="取消订单"
+                    onPress={() => this.props.del()}
                 />
                 <Button
                     onPress={() => this.props.navigation.navigate('Detail')}
@@ -184,20 +197,17 @@ class Detailinfo extends Component {
     constructor() {
         super();
         this.state = {
-            time: '12:00',
-            info: '2316aaa',
+
         }
     }
 
     del() {
-        
+        this.props.navigation.popToTop()
     }
 
     render() {
         return (
             <ThemeProvider>
-                <Text>预计送达时间：{this.state.time}</Text>
-                <Text>{this.state.info}为您送纸</Text>
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="修改订单信息"
@@ -206,7 +216,7 @@ class Detailinfo extends Component {
                 <Button
                     titleStyle={styles.buttonStyle}
                     title="取消订单"
-                    onPress={() => this.props.navigation.popToTop()}
+                    onPress={() => this.props.del()}
                 />
                 <Button
                     titleStyle={styles.buttonStyle}
