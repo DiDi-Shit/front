@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { View, Text } from 'react-native'
 import { StyleSheet } from 'react-native';
 
-navigator.geolocation = require('@react-native-community/geolocation');
+//navigator.geolocation = require('@react-native-community/geolocation');
 
 export default class JMap extends Component {
     constructor() {
@@ -16,7 +16,7 @@ export default class JMap extends Component {
 
     my_data = {
         mx: 10,
-        w: 0,
+        w: 0,   
         j: 0
     };
     change(latitude, longitude) {
@@ -25,7 +25,6 @@ export default class JMap extends Component {
         this.my_data.j = longitude;
         this.get_info();
         console.log(this.state);
-
         console.log(this.state.datas);
     }
 
@@ -50,7 +49,6 @@ export default class JMap extends Component {
                 alert(error);
             });
     }
-
     componentDidMount() {
 
     }
@@ -63,13 +61,14 @@ export default class JMap extends Component {
         console.log(typeof(this.state.datas));
         if (this.state.datas != undefined) {
             for (var i = 0; i < this.state.datas.mx; i++) {
+
+                console.log(i,'  p');
                 pages.push(
                     <Marker
                         activeF
                         title='厕所'
                         color='red'
-                        
-                        description='小厕所'
+                        description={'id: '+this.state.datas.ans[i][0].toString()}
                         coordinate={
                             {
                                 latitude: parseFloat(this.state.datas.ans[i][1]),
